@@ -131,7 +131,8 @@ if (typeof btoa == 'undefined') {
             <li><b>Type numeric subscript:</b> put an underscore before the number (like "S_0")</li>
             <li><b>Type greek letter:</b> put a backslash before it (like "\beta") with space at the end</li>
             <li><b>Additional symbols:</b> Type "\emptyset" for &#8709;, "\rightarrow" for &#8594;, "\leftarrow" for &#8592; and "\tmblank" for &#9251; with space at the end.<br/>
-											Note that for the last symbol to be properly displayed in a LaTeX environment, define the following in the file preamble:<br/>
+											Note that for the last symbol to be properly displayed in a LaTeX environment - The following should be defined in the file preamble:<br/>
+											\usepackage{amssymb} <br/>
 											\newcommand{\tmblank}{\mathord{\llcorner\!\lrcorner}}</li>
             <li><b>To undo/redo</b> ctrl+z/ctrl+y</li>
             <li><b>Move viewport:</b> click on canvas background and move mouse around</li>
