@@ -607,7 +607,7 @@ function ExportAsSVG(bounds) {
 }
 
 var greekLetterNames = ['Alpha', 'Beta', 'Gamma', 'Delta', 'Epsilon', 'Zeta', 'Eta', 'Theta', 'Iota', 'Kappa', 'Lambda', 'Mu', 'Nu', 'Xi', 'Omicron', 'Pi', 'Rho', 'Sigma', 'Tau', 'Upsilon', 'Phi', 'Chi', 'Psi', 'Omega',
-                        'emptyset', 'rightarrow', 'leftarrow', 'tmblank'];
+                        'emptyset', 'rightarrow', 'leftarrow', 'tmblank', 'hat'];
 
 function convertLatexShortcuts(text) {
     // html greek characters
@@ -629,6 +629,12 @@ function convertLatexShortcuts(text) {
             text = text.replace(new RegExp('\\\\' + name + ' ', 'g'), String.fromCharCode(9251));
             continue;
         }
+        if (name == "hat") {
+            text = text.replace(new RegExp('\\\\' + name + ' ', 'g'), String.fromCharCode(770));
+            continue;
+        }
+        // Reverse the order on the hats so they're displayed properly in LaTeX
+        text = text.replace(/\\hat\s([a-zA-Z])/g, '$1' + String.fromCharCode(0x0302));
         text = text.replace(new RegExp('\\\\' + name + ' ', 'g'), String.fromCharCode(913 + i + (i > 16)));
         text = text.replace(new RegExp('\\\\' + name.toLowerCase() + ' ', 'g'), String.fromCharCode(945 + i + (i > 16)));
     }
