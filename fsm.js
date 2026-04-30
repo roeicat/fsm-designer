@@ -606,7 +606,8 @@ function ExportAsSVG(bounds) {
     this.save = this.restore = this.clearRect = function () { };
 }
 
-var greekLetterNames = ['Alpha', 'Beta', 'Gamma', 'Delta', 'Epsilon', 'Zeta', 'Eta', 'Theta', 'Iota', 'Kappa', 'Lambda', 'Mu', 'Nu', 'Xi', 'Omicron', 'Pi', 'Rho', 'Sigma', 'Tau', 'Upsilon', 'Phi', 'Chi', 'Psi', 'Omega', 'emptyset', 'rightarrow', 'leftarrow'];
+var greekLetterNames = ['Alpha', 'Beta', 'Gamma', 'Delta', 'Epsilon', 'Zeta', 'Eta', 'Theta', 'Iota', 'Kappa', 'Lambda', 'Mu', 'Nu', 'Xi', 'Omicron', 'Pi', 'Rho', 'Sigma', 'Tau', 'Upsilon', 'Phi', 'Chi', 'Psi', 'Omega',
+                        'emptyset', 'rightarrow', 'leftarrow', 'tmblank'];
 
 function convertLatexShortcuts(text) {
     // html greek characters
@@ -622,6 +623,10 @@ function convertLatexShortcuts(text) {
         }
         if (name == "leftarrow") {
             text = text.replace(new RegExp('\\\\' + name + ' ', 'g'), String.fromCharCode(8592));
+            continue;
+        }
+        if (name == "tmblank") {
+            text = text.replace(new RegExp('\\\\' + name + ' ', 'g'), String.fromCharCode(9251));
             continue;
         }
         text = text.replace(new RegExp('\\\\' + name + ' ', 'g'), String.fromCharCode(913 + i + (i > 16)));
